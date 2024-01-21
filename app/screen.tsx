@@ -95,7 +95,8 @@ const ExpenseSplitter: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="bg-gray-200 p-8 rounded shadow-xl w-96">
+      <div className="bg-green-50 p-8 rounded shadow-xl w-96 border rounded 
+      border-slate-500">
         <h1 className="text-xl font-mono mb-4">Split expenses with your roommates</h1>
 
         <div className="mb-4">
@@ -136,7 +137,7 @@ const ExpenseSplitter: React.FC = () => {
             placeholder="% Paid"
             className="mr-2 p-2 border rounded w-1/3"
           />
-          <button onClick={addUser} className="p-2 bg-purple-300 text-black rounded">
+          <button onClick={addUser} className="p-2 bg-green-300 text-black rounded">
             Add
           </button>
         </div>
@@ -160,7 +161,7 @@ const ExpenseSplitter: React.FC = () => {
           </div>
         ))}
 
-        <button onClick={handleSplit} className="p-2 bg-purple-500 text-black rounded">
+        <button onClick={handleSplit} className="p-2 bg-green-400 text-black rounded">
           Split
         </button>
 

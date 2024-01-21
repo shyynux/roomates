@@ -11,6 +11,8 @@
   "dependencies": {
     "@onflow/fcl": "^1.9.0",
     "@onflow/types": "^1.2.1",
+    "dotenv": "^16.3.2",
+    "firebase": "^10.7.2",
     "next": "14.1.0",
     "react": "^18",
     "react-dom": "^18"
