@@ -6,8 +6,38 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  text-align: center;
+  /* justify-content: center; */
+} 
+
+div {
+  /* background-color: aquamarine; */
+  /* text-align: center; */
 }
 
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid black;
+  border-radius: 8px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Box shadow for a subtle lift effect */
+  transition: background-color 0.3s, box-shadow 0.3s;
+  margin: 1rem;
+}
+
+button:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Enhance box shadow on hover */
+}
+
+
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -30,4 +60,4 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
+} */
