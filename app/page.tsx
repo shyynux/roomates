@@ -1,9 +1,9 @@
 "use client"; // This is a client component
+import * as fcl from "@onflow/fcl";
 import Head from 'next/head';
 import "../flow/config";
-import { useState, useEffect } from "react";
+import { useState, useEffect, SetStateAction } from "react";
 import ExpenseSplitter from './screen';
-import * as fcl from "@onflow/fcl";
 
 interface User {
   loggedIn: boolean | null;
@@ -16,7 +16,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ title, createdBy }) => (
-  <header className="flex justify-between items-center p-6 bg-white-100 
+  <header className="flex justify-between items-center p-6 bg-purple-50 
   font-mono border rounded mr-2 ml-2 shadow-lg border-slate-700">
     <div className='text-xl'>{title}</div>
     <div>{createdBy}</div>
@@ -100,7 +100,7 @@ export default function Home() {
       limit: 50
     });
   
-    fcl.tx(transactionId).subscribe(res => setTransactionStatus(res.status));
+    fcl.tx(transactionId).subscribe((res: { status: SetStateAction<null>; }) => setTransactionStatus(res.status));
   };
   
   const AuthedState: React.FC = () => {
