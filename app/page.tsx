@@ -10,6 +10,19 @@ interface User {
   addr?: string;
 }
 
+interface HeaderProps {
+  title: string;
+  createdBy: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ title, createdBy }) => (
+  <header className="flex justify-between items-center p-6 bg-white-100 
+  font-mono border rounded mr-2 ml-2 shadow-lg border-slate-700">
+    <div className='text-xl'>{title}</div>
+    <div>{createdBy}</div>
+  </header>
+);
+
 export default function Home() {
   const [user, setUser] = useState<User>({ loggedIn: null });
   const [name, setName] = useState('No Profile');
@@ -90,39 +103,57 @@ export default function Home() {
     fcl.tx(transactionId).subscribe(res => setTransactionStatus(res.status));
   };
   
-
   const AuthedState: React.FC = () => {
     return (
-      <div>
-        <div>Address: {user?.addr ?? "No Address"}</div>
-        <div>Profile Name: {name ?? "--"}</div> 
-        <div>Transaction Status: {transactionStatus ?? "--"}</div>
-        <button onClick={sendQuery}>Send Query</button> 
-        <button onClick={initAccount}>Init Account</button> 
-        <button onClick={executeTransaction}>Execute Transaction</button>
-        <button onClick={fcl.unauthenticate}>Log Out</button>
-       <ExpenseSplitter />
+      <div className='flex'>
+        <div className='flex flex-col justify-center items-center w-1/2 pt-4 p-8 border rounded'>
+          <div>My Address: {user?.addr ?? "No Address"}</div>
+          <div>My Profile Name: {name ?? "--"}</div>
+          <div>Transaction Status: {transactionStatus ?? "--"}</div>
+          <button className='m-2 p-4' onClick={sendQuery}>
+            Send Query
+          </button>
+          <button className='m-2 p-4' onClick={initAccount}>
+            Init Account
+          </button>
+          <button className='m-2 p-4' onClick={executeTransaction}>
+            Execute Transaction
+          </button>
+          <button onClick={fcl.unauthenticate}>
+            Log Out
+          </button>
+        </div>
+        
+        <div className='flex w-1/2 p-8 justify-center items-center border rounded'>
+          <ExpenseSplitter />
+        </div>
       </div>
     );
   };
+  
 
   const UnauthenticatedState: React.FC = () => {
     return (
-      <div>
-        <button onClick={fcl.logIn}>Log In</button>
-        <button onClick={fcl.signUp}>Sign Up</button>
+      <div className="flex flex-row items-center justify-center h-screen">
+        <button onClick={fcl.logIn}>
+          Log In
+        </button>
+        <button onClick={fcl.signUp}>
+          Sign Up
+        </button>
       </div>
     );
   };
+  
 
   return (
     <div>
       <Head>
-        <title>FCL Quickstart with NextJS</title>
+        <title>logged in - nextJS</title>
         <meta name="description" content="Roommates - A web3 app on Flow!" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <h1>Flow App</h1>
+      <Header title="Roommates" createdBy="by Shyynux" />
       {user.loggedIn ? <AuthedState /> : <UnauthenticatedState />}
     </div>
   );
